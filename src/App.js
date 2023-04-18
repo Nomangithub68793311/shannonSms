@@ -22,17 +22,18 @@ function App() {
       alert('please fill required infromation')
     }
     else{
-try{
-  const response = await axios.get(`https://smpp.ajuratech.com:7790/sendtext?apikey=873b329043af953f&secretkey=7b3ac1aa&callerID=
-  1234&toUser=${number}&messageContent=${message}`);
-  console.log("response",response);
-}
-catch (error) {
-  console.error("error",error);
-}
-}
-   
-  }
+        fetch(`https://www.bool.re/v1/send/sms/number/hello/mister/${number}/${message}`)
+        .then(res=>res.json())
+        .then(data=>{
+          setNumber('')
+          setMessage('')
+
+      alert('SMS sent successfully')
+
+        })
+        .catch(e=>console.log(e))
+     }
+     }
   return (
     <div className="App">
       <h1>Shannon SMS</h1>
@@ -56,3 +57,6 @@ catch (error) {
 }
 
 export default App;
+
+
+
