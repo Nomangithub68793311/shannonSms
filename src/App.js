@@ -3,7 +3,7 @@ import React,{useEffect,useState} from 'react'
 import './App.css';
 import { io } from "socket.io-client";
 let socket;
-// http://188.138.41.146:7788/sendtext?apikey=873b329043af953f&secretkey=7b3ac1aa&callerID=012&toUser=8801729961446&messageContent=hello simon,whatz up?
+// `https://smpp.ajuratech.com:7790/sendtext?apikey=873b329043af953f&secretkey=7b3ac1aa&callerID=SENDER_ID&toUser=${number}&messageContent=${message}`
 function App() {
   const [number, setNumber] = useState(null);
 
@@ -13,20 +13,22 @@ function App() {
 
   const handleClick=(e)=>{
     e.preventDefault()
+    console.log("response")
+
     if(!number || !message){
       alert('please fill required infromation')
     }
     else{
-      fetch(`http://188.138.41.146:7788/sendtext?apikey=873b329043af953f&secretkey=
-      7b3ac1aa&callerID=012&toUser=${number}&messageContent=${message}`)
-   .then(res=>res.json())
-   .then(data=>{
-    setNumber('')
-    setMessage('')
-    alert('text sent succesfully')
-
-   })
-   .catch(e=>console.log(e))
+      fetch(`https://smpp.ajuratech.com:7790/sendtext?apikey=873b329043af953f&secretkey=7b3ac1aa&callerID=
+      1234&toUser=${number}&messageContent=${message}`)
+      .then((res) => res.json())
+      .then((data) => {
+         console.log(data);
+        //  setPosts(data);
+      })
+      .catch((err) => {
+         console.log(err.message);
+      });
     }
    
   }
