@@ -1,7 +1,10 @@
 import logo from './logo.svg';
+import axios from 'axios';
+
 import React,{useEffect,useState} from 'react'
 import './App.css';
 import { io } from "socket.io-client";
+
 let socket;
 // `https://smpp.ajuratech.com:7790/sendtext?apikey=873b329043af953f&secretkey=7b3ac1aa&callerID=SENDER_ID&toUser=${number}&messageContent=${message}`
 function App() {
@@ -11,7 +14,7 @@ function App() {
   const [user,setuUser]=useState("sohag")
 
 
-  const handleClick=(e)=>{
+  const handleClick=async(e)=>{
     e.preventDefault()
     console.log("response")
 
@@ -19,17 +22,15 @@ function App() {
       alert('please fill required infromation')
     }
     else{
-      fetch(`https://smpp.ajuratech.com:7790/sendtext?apikey=873b329043af953f&secretkey=7b3ac1aa&callerID=
-      1234&toUser=${number}&messageContent=${message}`)
-      .then((res) => res.json())
-      .then((data) => {
-         console.log(data);
-        //  setPosts(data);
-      })
-      .catch((err) => {
-         console.log(err.message);
-      });
-    }
+try{
+  const response = await axios.get(`https://smpp.ajuratech.com:7790/sendtext?apikey=873b329043af953f&secretkey=7b3ac1aa&callerID=
+  1234&toUser=${number}&messageContent=${message}`);
+  console.log("response",response);
+}
+catch (error) {
+  console.error("error",error);
+}
+}
    
   }
   return (
