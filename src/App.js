@@ -10,23 +10,36 @@ let socket;
 function App() {
   const [number, setNumber] = useState(null);
 
-  const [message,setMessage]=useState('')
+  const [text,setText]=useState('')
   const [user,setuUser]=useState("sohag")
 
 
   const handleClick=async(e)=>{
     e.preventDefault()
     console.log("response")
-
-    if(!number || !message){
+    console.log(number,text)
+    if(!number || !text){
       alert('please fill required infromation')
     }
     else{
-        fetch(`https://www.bool.re/v1/send/sms/number/hello/mister/${number}/${message}`)
+    
+        fetch(`https://edtecobd.com/api/send-sms-v1`,{
+          method:'POST',
+          headers: {
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+         },
+          body:JSON.stringify({
+           
+           "number":number,
+           "text":text
+  
+          })
+        })
         .then(res=>res.json())
         .then(data=>{
           setNumber('')
-          setMessage('')
+          setText('')
 
       alert('SMS sent successfully')
 
@@ -47,7 +60,7 @@ function App() {
         <div style={{margin:10}}>
         <label>
           
-          <textarea  type="text" placeholder='Message'  value={message} onChange={e=>setMessage(e.target.value)} />
+          <textarea  type="text" placeholder='Message'  value={text} onChange={e=>setText(e.target.value)} />
         </label>
         </div>
         <input type="submit" value="Submit" />
