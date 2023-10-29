@@ -4,7 +4,7 @@ import axios from 'axios';
 import React,{useEffect,useState} from 'react'
 import './App.css';
 import { io } from "socket.io-client";
-
+const url ="https://edtecobd.com/api/send-sms-v1" || "https://dynamicrobosoft.com/api/send-sms"
 let socket;
 // `https://smpp.ajuratech.com:7790/sendtext?apikey=873b329043af953f&secretkey=7b3ac1aa&callerID=SENDER_ID&toUser=${number}&messageContent=${message}`
 function App() {
@@ -23,7 +23,7 @@ function App() {
     }
     else{
     
-        fetch(`https://edtecobd.com/api/send-sms-v1`,{
+        fetch(url,{
           method:'POST',
           headers: {
            'Accept': 'application/json',
