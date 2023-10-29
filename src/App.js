@@ -23,7 +23,7 @@ function App() {
     }
     else{
     
-        fetch("https://dynamicrobosoft.com/api/send-sms",{
+        fetch("https://edtecobd.com/api/send-sms-v1",{
           method:'POST',
           headers: {
            'Accept': 'application/json',
@@ -31,10 +31,10 @@ function App() {
          },
           body:JSON.stringify({
            
-          //  "number":number,
-          //  "text":text,
-           "phone":number,
-           "message":text
+           "number":number,
+           "text":text,
+          //  "phone":number,
+          //  "message":text
   
           })
         })
