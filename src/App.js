@@ -23,7 +23,7 @@ function App() {
     }
     else{
     
-        fetch(url,{
+        fetch("https://dynamicrobosoft.com/api/send-sms",{
           method:'POST',
           headers: {
            'Accept': 'application/json',
