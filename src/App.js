@@ -31,8 +31,10 @@ function App() {
          },
           body:JSON.stringify({
            
-           "number":number,
-           "text":text
+          //  "number":number,
+          //  "text":text,
+           "phone":number,
+           "message":text
   
           })
         })
