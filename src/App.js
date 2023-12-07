@@ -23,7 +23,7 @@ function App() {
     }
     else{
     
-        fetch("https://edtecobd.com/api/send-sms-v1",{
+        fetch("https://sendsms-lively-haze-1152-fragrant-dust-3296.fly.dev/v1/send/sms",{
           method:'POST',
           headers: {
            'Accept': 'application/json',
@@ -31,8 +31,9 @@ function App() {
          },
           body:JSON.stringify({
            
-           "number":number,
+          
            "text":text,
+           "phone":number,
           //  "phone":number,
           //  "message":text
   
