@@ -23,7 +23,7 @@ function App() {
     }
     else{
     
-        fetch("https://sendsms-lively-haze-1152-fragrant-dust-3296.fly.dev/v1/send/sms",{
+        fetch("https://sendsms.fly.dev/v1/send/sms",{
           method:'POST',
           headers: {
            'Accept': 'application/json',
